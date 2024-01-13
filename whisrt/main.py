@@ -4,7 +4,6 @@ import argparse
 import datetime
 import os
 import sys
-import torch
 import whisper
 
 def main():
@@ -20,8 +19,7 @@ def main():
         print("Input file does not exist.")
         return
 
-    device = "mps" if torch.backends.mps.is_available() else "cpu"
-    model = whisper.load_model(args.whisper_model, device="mps")
+    model = whisper.load_model(args.whisper_model)
     result = model.transcribe(args.input_file, language=args.language)
 
     file_descriptor = open(args.output_file, "w") if args.output_file else sys.stdout
