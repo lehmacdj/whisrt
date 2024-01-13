@@ -4,6 +4,7 @@ import argparse
 import datetime
 import os
 import sys
+import torch
 import whisper
 
 def main():
