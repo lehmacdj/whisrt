@@ -7,7 +7,7 @@ Run `source setup.sh` to create a new venv and fetch dependencies.
 On future runs you can use `source venv/bin/activate` to load the virtual environment.
 
 ## Installation
-Run `pip install .`. Ideally you should do this from a virtual environment to avoid problems with your python installation causing errors.
+Run `pip install .` from outside a virtual environment to install the command line tool `whisrt`.
 
 ## Use
 Command line help info is authoritative.
