@@ -52,7 +52,8 @@ def main():
     else:
         # whisper's native interface doesn't work with mps so we don't pass get_torch_device()
         model = whisper.load_model(args.whisper_model)
-        result = model.transcribe(args.input_file, language=args.language)
+        # confusingly passing verbose=False gets it to print just a progress bar
+        result = model.transcribe(args.input_file, language=args.language, verbose=False)
         result = result["segments"]
 
     file_descriptor = open(args.output_file, "w") if args.output_file else sys.stdout
