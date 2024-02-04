@@ -31,13 +31,21 @@ def main():
         return
 
     if args.use_transformers:
-        pipe = transformers.pipeline(
-          "automatic-speech-recognition",
-          model=f"openai/whisper-{args.whisper_model}",
-          chunk_length_s=30,
-          language=args.language,
-          device=get_torch_device(),
-        )
+        if args.language is None:
+            pipe = transformers.pipeline(
+              "automatic-speech-recognition",
+              model=f"openai/whisper-{args.whisper_model}",
+              chunk_length_s=30,
+              device=get_torch_device(),
+            )
+        else:
+            pipe = transformers.pipeline(
+              "automatic-speech-recognition",
+              model=f"openai/whisper-{args.whisper_model}",
+              chunk_length_s=30,
+              generate_kwargs={"language": f"<|{args.language}|>", "task": "transcribe"},
+              device=get_torch_device(),
+            )
         result = pipe(args.input_file, return_timestamps=True)
         # the chunks returned from the pipeline are actually the equivalent of segments
         # confusingly huggingface uses the term "chunk" differently for
