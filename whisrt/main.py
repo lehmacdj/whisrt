@@ -19,7 +19,7 @@ def get_torch_device():
 def main():
     # parse command line arguments
     parser = argparse.ArgumentParser(description="Command line tool for subtitling video/audio files.")
-    parser.add_argument("-l", "--language", type=str, help="Specify the language for subtitles.")
+    parser.add_argument("-l", "--language", type=str, help="Specify the language for subtitles. If left unspecified, the language is inferred. For huggingface transformers (e.g. --use-transformers) this is a two letter language code (e.g. '--language=ja'). By default this is a language name (e.g. ('--language=japanese')")
     parser.add_argument("-m", "--whisper-model", type=str, default="large-v3", help="Specify the Whisper model to use.")
     parser.add_argument("-o", "--output-file", type=str, help="Specify the name of the output file.")
     parser.add_argument("--use-transformers", action='store_true', help="Use huggingface transformers for inference.")
