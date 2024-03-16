@@ -7,7 +7,7 @@ Run `source setup.sh` to create a new venv and fetch dependencies.
 On future runs you can use `source venv/bin/activate` to load the virtual environment.
 
 ## Installation
-Run `pip install .` from outside a virtual environment to install the command line tool `whisrt`.
+Run `pip install .` from outside a virtual environment to install the command line tool `whisrt` into your global pip bin.
 
 ## Use
 Provide a file with an audiostream to generate subtitles for, and optionally specify the language for slightly better results, e.g.:
